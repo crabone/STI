@@ -1,9 +1,5 @@
 <?php 
 session_start();
-
-include 'header.html'
-include 'footer.html'
-
-
-
+define('PAGE', isset($_GET['page']) ? $_GET['page'] : 'index');
+require_once('php' . DIRECTORY_SEPARATOR . PAGE . '.php');
 ?>

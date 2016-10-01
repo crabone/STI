@@ -11,20 +11,22 @@
  *
  * @author at
  */
-class user {
+class Membre {
     private $id;
     private $login;
     private $pass;
     private $actif;
     private $estAdmin;
         
-    function __construct($id, $login, $pass, $actif, $estAdmin) {
+    function __construct($id, $login, $actif, $estAdmin) {
         $this->id = $id;
         $this->login = $login;
         $this->pass = $pass;
         $this->actif = $actif;
         $this->estAdmin = $estAdmin;
     }
+    
+    
     
     function getId() {
         return $this->id;
@@ -61,6 +63,7 @@ class user {
     function setEstAdmin($estAdmin) {
         $this->estAdmin = $estAdmin;
     }
+
 }
 
 
@@ -115,7 +118,43 @@ class Message {
 
     function setIdDestinataire($idDestinataire) {
         $this->idDestinataire = $idDestinataire;
-    }    
+    }
+    
 }
+
+
+class ConnexionDB{
+    
+    private static function connect() {
+        if ($dbPDO = new PDO('sqlite:../../STI.db'))
+        {
+            echo 'Connected to the database.';
+            return $dbPDO;
+        } else {
+            echo 'Connection failed: ' . htmlspecialchars;
+            ($error);
+          return NULL;
+        }
+    }
+    
+    public static function connexionMembre($login, $pass){
+        
+        $dbClient = self::connect();
+        $stmt = $dbClient->prepare("select id_membre, login, actif, admin from membre where login =". $login ." and pass=" . $pass. "limit 1");
+        
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if($result->rowCount() > 0){
+            if($result['actif'] == 1)
+                return new Membre($result['id_membre'], $result['login'], $result['actif'], $result['estAdmin']);
+        }
+        
+        return NULL;
+    }
+
+}
+
+
 
 ?>
