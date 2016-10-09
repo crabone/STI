@@ -6,24 +6,34 @@ if (!estConnecte()) {
 $erreurs = "Le pseudo du destinataire n'existe pas";
 $afficherErreurs = 0;
 $estEnvoye = 0;
-if (isset($_POST['loginDst'])) {
 
-    $idMembreDst = ConnexionDB::getIdMembre($_POST['loginDst']);
+if (isset($_GET['idMessage']) ) {
 
-    if ($idMembreDst != -1) {
+    $message = ConnexionDB::getMessage($_GET['idMessage']);
+    if ($message) {
 
-        $result = ConnexionDB::ajouterMessage( $_POST['sujet'], $_POST['corps'],$_SESSION['id_membre'], $idMembreDst);
+        $destinataire = ConnexionDB::getMembre($message->getIdExpediteur());
 
-        if ($result == false) {
-            $erreurs = "Une erreur est survenue lors de l'envoi du message.";
+        if ($destinataire == false) {
+            $erreurs = "Une erreur est survenue lors de la récupération du membre.";
 	          $afficherErreurs = 1;
-        } else {
-          $estEnvoye = 1;
         }
 
     } else {
         $afficherErreurs = 1;
     }
+}
+
+if(isset($_POST['loginDst'])){
+  $result = ConnexionDB::ajouterMessage($_POST['sujet'], $_POST['corps'],$_SESSION['id_membre'], $message->getIdExpediteur());
+
+  if (!$result) {
+      $erreurs = "Une erreur est survenue lors de l'envoi du message.";
+      $afficherErreurs = 1;
+  } else {
+    $estEnvoye = 1;
+  }
+
 }
 
 require_once('html/header.html');
@@ -58,15 +68,15 @@ if (estAdmin()) {
 
         <form id="contact"  method="post" action="">
             <h3>Envoyer un message</h3>
-	<?php
-            if ($afficherErreurs == 1) {
-                echo "<h5>". $erreurs ."</h5><br>";
-            } else if ($estEnvoye == 1){
-		            echo "<h5>message envoyé avec succès</h5></br>";
-	    }
-        ?>
+	           <?php
+                if ($afficherErreurs == 1) {
+                    echo "<h5>". $erreurs ."</h5><br>";
+                } else if ($estEnvoye == 1){
+    		            echo "<h5>message envoyé avec succès</h5></br>";
+    	             }
+               ?>
             <fieldset>
-                <input name="loginDst" placeholder="Pseudo destinataire" type="text" tabindex="1" required>
+                <input name="loginDst" placeholder="<?php echo $destinataire->getLogin(); ?>" type="text" tabindex="1" readonly>
             </fieldset>
             <fieldset>
                 <input  name="sujet" placeholder="Sujet" type="text" tabindex="2">

@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `membres` (
 
 CREATE TABLE `messages` (
   `id_message` INTEGER NOT NULL PRIMARY KEY,
+  `date` datetime NOT NULL,
   `sujet` TEXT NOT NULL,
   `corps` TEXT NOT NULL,
   `id_expediteur` INTEGER NOT NULL,

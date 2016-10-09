@@ -2,6 +2,7 @@
 if (estConnecte()) {
     retourPageMessages();
 }
+$erreur ="";
 if (isset($_POST['login']) && isset($_POST['pass'])) {
     $membre = ConnexionDB::connexionMembre($_POST['login'], $_POST['pass']);
     if ($membre !== NULL) {
@@ -9,6 +10,8 @@ if (isset($_POST['login']) && isset($_POST['pass'])) {
         $_SESSION['id_membre'] = $membre->getId();
         $_SESSION['estAdmin'] = $membre->getEstAdmin();
         header('Location: ?page=messages');
+    } else {
+        $erreur = "Ce compte n'est pas actif ou le mot de passe est incorrect";
     }
 }
 
@@ -31,6 +34,11 @@ require_once('html/header.html');
 
 
     <div class="login">
+        <?php
+            if($erreur !== "") {
+              echo '<h5>' .$erreur.'</h5><br/>';
+            }
+        ?>
         <h1>Login</h1>
         <form method="post" action="">
             <input type="text" name="login" placeholder="Username" required />

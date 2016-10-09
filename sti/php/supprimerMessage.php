@@ -1,10 +1,19 @@
 <?php
+
 if (!estConnecte() && !estAdmin()) {
     retourPageLogin();
 }
 
+$erreur ="Erreur lors de la suppression du message<br/>";
+$afficherErreur=0;
 
-$membres = ConnexionDB::listeMembres();
+if(isset($_GET['idMessage'])) {
+	$ret = ConnexionDB::supprimerMessage($_GET['idMessage']);
+
+	if(!$ret){
+		$afficherErreur = 1;
+	}
+}
 
 
 require_once('html/header.html');
@@ -32,39 +41,19 @@ require_once('html/header.html');
 
 </div>
 
-<link rel="stylesheet" type="text/css" href="css/table.css">
 <div id="main">
-    <center><h1> Liste des membres </h1></center>
-	<table id="keywords">
-		<thead>
-	<tr>
-		<th>Login</th>
-		<th>Actif</th>
-		<th>Admin</th>
-		<th colspan="2">Actions</th>
-	</tr>
-</thead>
-<tbody>
-<?php
 
-foreach ($membres as $membre) {
-	echo '<tr>';
-		echo '<td>' . $membre->getLogin() . '</td>';
-		echo '<td>' . ($membre->getActif() ? 'oui' : 'non') . '</td>';
-		echo '<td>' . ($membre->getEstAdmin() ? 'oui' : 'non') . '</td>';
-		echo '<td><a href="?page=modifierMembre&amp;idMembre=' . $membre->getId() . '">Modifier</a></td>';
-		echo '<td><a href="?page=supprimerMembre&amp;idMembre=' . $membre->getId() . '">Supprimer</a></td>';
-	echo '</tr>';
-}
+    <?php
 
-?>
-</tbody>
-</table>
+	if($afficherErreur == 1){
+		echo '<h2>' . $erreur . '</h2>';
+	} else {
+		echo "Message supprimer avec succès<br\>";
+	}
+    ?>
 </div>
 
-<div> 
-	<center><a href="?page=ajouterMembre" > Ajouter un nouveau membre </a></center> 
-</div>
+
 <?php
 require_once('html/footer.html');
 ?>
