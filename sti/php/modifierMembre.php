@@ -20,18 +20,17 @@ if (isset($_GET['idMembre'])) {
         } else {
 
             $ret = ConnexionDB::modifierPassMembre($_GET['idMembre'], $_POST['pass']);
+
             if (!$ret) {
                 $erreur = "Une erreur est survenue lors de la mise à jour du mot de passe";
             } else {
-                if (isset($_POST['estAdmin']) && isset($_POST['actif'])) {
-			echo 'entre ici';
+                if (isset($_POST['estAdmin']) || isset($_POST['actif'])) {
                     $admin = ($_POST['estAdmin'] ? 1 : 0);
                     $estActif = ($_POST['actif'] ? 1 : 0);
 
                     $ret = ConnexionDB::modifierMembre($_POST['idMembre'], $admin, $estActif);
-
-                    if (!$ret) {
-
+                    
+                    if ($ret === false ) {
                         $erreur = "Une erreur est survenue lors de la mise à jour de l'utilisateur";
                     } else {
                         echo "<h2> utilisateur modifier avec succès </h2>";
@@ -43,7 +42,7 @@ if (isset($_GET['idMembre'])) {
 }
 
 require_once('html/header.html');
-?> 
+?>
 
 <nav id="nav">
 
@@ -66,11 +65,10 @@ if (estAdmin()) {
 
 </div>
 
-<div id="main">		
+<div id="main">
         <?php
-        if ($erreur !== "") {
-
-            echo '<h3>' . $erreur . '</h3><br />';
+          if ($erreur !== "") {
+              echo '<h3>' . $erreur . '</h3><br />';
         }
         ?>
     <form action="" method="post">

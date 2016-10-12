@@ -148,7 +148,7 @@ class Message {
 class ConnexionDB {
 
     private static function connexion() {
-        if ($dbPDO = new PDO('sqlite:../../STI2.db')) {
+        if ($dbPDO = new PDO('sqlite:/var/www/databases/STI.db')) {
             return $dbPDO;
         } else {
             return NULL;
@@ -185,7 +185,6 @@ class ConnexionDB {
         $dbClient = self::connexion();
 
         $stmt = $dbClient->prepare("update membres set pass=? where id_membre=?");
-        echo 'arrrive db 1';
         $stmt->bindParam(1, $pass, PDO::PARAM_STR);
         $stmt->bindParam(2, $idMembre, PDO::PARAM_INT);
         $ret = $stmt->execute();
@@ -201,22 +200,31 @@ class ConnexionDB {
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($result['nbrAdmin'] < 1 && $estAdmin == 0 && $actif == 0) {
+        if ($result['nbrAdmin'] !== 1 && $estAdmin == 0 && $actif == 0) {
+            $dbClient = NULL;
             return false;
         } else {
-
+          $stmt = NULL;
+          try {
+            $dbClient = NULL;
             echo 'arrive la avec actif ' . $actif . ' et estAdmin ' . $estAdmin . ' ';
+
             $dbClient = self::connexion();
+            //$dbClient->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             $stmt = $dbClient->prepare("update membres set estAdmin=?, actif=? where id_membre=?");
 
-            $stmt->bindParam(1, $estAdmin, PDO::PARAM_INT);
-            $stmt->bindParam(2, $actif, PDO::PARAM_INT);
+            $stmt->bindParam(1, $estAdmin, PDO::PARAM_BOOL);
+            $stmt->bindParam(2, $actif, PDO::PARAM_BOOL);
             $stmt->bindParam(3, $idMembre, PDO::PARAM_INT);
 
-            $ret = $stmt->execute();
-
+            $result = $stmt->execute();
             $dbClient = NULL;
-            return ret;
+            var_dump($result);
+            return $result;
+          }catch(PDOExcetion $e){
+             echo $e->getMessage();
+          }
         }
     }
 
@@ -261,7 +269,7 @@ class ConnexionDB {
         }
 
 
-        //$dbClient->close();
+        $dbClient = NULL;
         return $messages;
     }
 
@@ -278,13 +286,13 @@ class ConnexionDB {
         $stmt->bindParam(4, $estAdmin, PDO::PARAM_INT);
 
         $res = $stmt->execute();
+        $dbClient = NULL;
         return $res;
     }
 
     public static function ajouterMessage($sujet, $corps, $idMembreExp, $idMembreDest) {
 
         $dbClient = self::connexion();
-        echo 'var ' . $sujet ." ".  $corps." ".  $idMembreExp ." ". $idMembreDest;
         $stmt = $dbClient->prepare("insert into  messages (date, sujet, corps, id_expediteur, id_destinataire) values (datetime(),?, ?, ?, ?)");
 
         $stmt->bindParam(1, $sujet, PDO::PARAM_STR);
@@ -292,6 +300,7 @@ class ConnexionDB {
         $stmt->bindParam(3, $idMembreExp, PDO::PARAM_INT);
         $stmt->bindParam(4, $idMembreDest, PDO::PARAM_INT);
         $result = $stmt->execute();
+        $dbClient =NULL;
         return $result;
     }
 
@@ -305,6 +314,7 @@ class ConnexionDB {
         foreach ($result as $value) {
             $membres[] = new Membre($value['id_membre'], $value['login'], $value['actif'], $value['estAdmin']);
         }
+        $dbClient =NULL;
         return $membres;
     }
 
