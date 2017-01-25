@@ -187,7 +187,7 @@ un nouveau.
 .right-column[
 
 Pour avoir un meilleur aperçu du fonctionnement de l'application,
-d'un point de sa sécurité, on peut la représenté par un DFD.
+d'un point de sa sécurité, on peut la représenter par un DFD.
 
 ![DFD](assets/images/dfd.jpg)
 
@@ -214,45 +214,377 @@ Ces actifs doivent remplir les critères de sécurité suivants:
 * Disponibilité.
 
 ]
+
 ---
 
 .left-column[
   ## Menaces
+  ### Données utilisateurs
 ]
 .right-column[
+
+### AoC
+
+**Acteur:**
+
+**Moyen(s):**
+
+**Motivation(s):**
+
+**Effet:**
+
+**Impact:**
+
+* Réputationnel ();
+* Financier ();
+* Productivité ().
+
+**Contremesures:**
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### Les données utilisateurs peuvent être volées.
+
+**Acteur:** Un administrateur.
+
+**Moyen(s):** Accès légitime à la base de donnée.
+
+**Motivation(s):** Vol suite à un licenciement dans le but d'une réutilisation
+frauduleuse ou d'une vente à un tier.
+
+**Effet:** Divulgation.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Élevé);
+* Productivité (Faible).
+
+**Contremesures:**
+.red[Risque accepté.]
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### Les données utilisateurs peuvent être détruites.
+
+**Acteur:** Un administrateur.
+
+**Moyen(s):** Mauvaise manipulation (Mise à jours de l'application ou du système).
+
+**Motivation(s):** Aucune raison apparente.
+
+**Effet:** Destruction, indisponibilité.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Élevé);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
+* Sensibiliser le nouveau personnel quant à l'utilisation du système.
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### Les données utilisateurs peuvent être inaccessibles.
+
+**Acteur:** Un administrateur.
+
+**Moyen(s):** Mauvaise manipulation (Mise à jours de l'application ou du système).
+
+**Motivation(s):** Aucune raison apparente.
+
+**Effet:** Indisponibilité
+
+**Impact:**
+
+* Réputationnel (Moyen);
+* Financier (Faible);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Sensibiliser le nouveau personnel quant à l'utilisation du système.
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### Les données utilisateurs peuvent être volées.
+
+**Acteur:** Un hacker.
+
+**Moyen(s):** Exploitation d'une faille de l'application ou du serveur.
+
+**Motivation(s):** Vol dans un but d'aquérir de l'intelligence, de revente,
+d'usurpation d'identité, de pivot ou de chantage.
+
+**Effet:** Divulgation.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Élevé);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Audit régulier de l'application web et de l'infrastructure système.
+* Stockage sécurisé des secrets (p.e. Hash des mots de passe).
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### Les données utilisateurs peuvent être détruites.
+
+**Acteur:** Un hacker (script-kiddie).
+
+**Moyen(s):** Exploitation d'une faille de l'application ou du serveur.
+
+**Motivation(s):** Pour le lulz.
+
+**Effet:** Destruction.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Élevé);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
+* Audit régulier de l'application web et de l'infrastructure système.
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### Une erreur de conception peut aboutir à la divulgation ou la destruction des données utilisateurs.
+
+**Acteur:** Bug applicatif.
+
+**Moyen(s):** -
+
+**Motivation(s):** -
+
+**Effet:** Divulgation, indisponibilité et destruction.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Moyen);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
+* Audit régulier de l'application web et de l'infrastructure système.
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### Le système hébergant l'application web peut tomber en panne.
+
+**Acteur:** Panne matérielle.
+
+**Moyen(s):** Suite à une surcharge.
+
+**Motivation(s):** -
+
+**Effet:** Indisponibilité et destruction.
+
+**Impact:**
+
+* Réputationnel (Moyen);
+* Financier (Moyen);
+* Productivité (Élevé).
+
+**Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
 
 ]
 ---
 
 .left-column[
   ## Menaces
+  ### Messages 
 ]
 .right-column[
 
+### AoC
+
+**Acteur:**
+
+**Moyen(s):**
+
+**Motivation(s):**
+
+**Effet:**
+
+**Impact:**
+
+* Réputationnel ();
+* Financier ();
+* Productivité ().
+
+**Contremesures:**
 ]
 ---
 
 .left-column[
   ## Menaces
+  ### Données utilisateurs
 ]
 .right-column[
 
+### AoC
+
+**Acteur:**
+
+**Moyen(s):**
+
+**Motivation(s):**
+
+**Effet:**
+
+**Impact:**
+
+* Réputationnel ();
+* Financier ();
+* Productivité ().
+
+**Contremesures:**
 ]
 ---
 
 .left-column[
   ## Menaces
+  ### Données utilisateurs
 ]
 .right-column[
 
+### AoC
+
+**Acteur:**
+
+**Moyen(s):**
+
+**Motivation(s):**
+
+**Effet:**
+
+**Impact:**
+
+* Réputationnel ();
+* Financier ();
+* Productivité ().
+
+**Contremesures:**
 ]
 ---
 
 .left-column[
   ## Menaces
+  ### Données utilisateurs
 ]
 .right-column[
 
+### AoC
+
+**Acteur:**
+
+**Moyen(s):**
+
+**Motivation(s):**
+
+**Effet:**
+
+**Impact:**
+
+* Réputationnel ();
+* Financier ();
+* Productivité ().
+
+**Contremesures:**
+]
+---
+
+.left-column[
+  ## Menaces
+  ### Données utilisateurs
+]
+.right-column[
+
+### AoC
+
+**Acteur:**
+
+**Moyen(s):**
+
+**Motivation(s):**
+
+**Effet:**
+
+**Impact:**
+
+* Réputationnel ();
+* Financier ();
+* Productivité ().
+
+**Contremesures:**
 ]
 ---
 
