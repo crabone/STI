@@ -219,33 +219,191 @@ Ces actifs doivent remplir les critères de sécurité suivants:
 
 .left-column[
   ## Menaces
-  ### Données utilisateurs
+  ### Communes 
 ]
 .right-column[
 
-### AoC
+### Les actifs peuvent être détruits.
 
-**Acteur:**
+**Acteur:** Un administrateur.
 
-**Moyen(s):**
+**Moyen(s):** Mauvaise manipulation (Mise à jours de l'application ou du système).
 
-**Motivation(s):**
+**Motivation(s):** Aucune raison apparente.
 
-**Effet:**
+**Effet:** Destruction, indisponibilité.
 
 **Impact:**
 
-* Réputationnel ();
-* Financier ();
-* Productivité ().
+* Réputationnel (Élevé);
+* Financier (Élevé);
+* Productivité (Moyen).
 
 **Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
+* Documenter l'application web et le système;
+* Sensibiliser le nouveau personnel quant à l'utilisation du système.
+
 ]
 
 ---
 
 .left-column[
   ## Menaces
+  ### Communes
+]
+.right-column[
+
+### Les actifs peuvent être inaccessibles.
+
+**Acteur:** Un administrateur.
+
+**Moyen(s):** Mauvaise manipulation (Mise à jours de l'application ou du système).
+
+**Motivation(s):** Aucune raison apparente.
+
+**Effet:** Indisponibilité
+
+**Impact:**
+
+* Réputationnel (Moyen);
+* Financier (Faible);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Documenter l'application web et le système;
+* Sensibiliser le nouveau personnel quant à l'utilisation du système.
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Communes
+]
+.right-column[
+
+### Les actifs peuvent être détruits.
+
+**Acteur:** Un hacker (script-kiddie).
+
+**Moyen(s):** Exploitation d'une faille de l'application ou du serveur.
+
+**Motivation(s):** Pour le lulz.
+
+**Effet:** Destruction.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Élevé);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
+* Audit régulier de l'application web et de l'infrastructure système.
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Communes
+]
+.right-column[
+
+### Une erreur de conception peut aboutir à la destruction des actifs.
+
+**Acteur:** Bug applicatif.
+
+**Moyen(s):** -
+
+**Motivation(s):** -
+
+**Effet:** Indisponibilité et destruction.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Moyen);
+* Productivité (Moyen).
+
+**Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
+* Audit régulier de l'application web et de l'infrastructure système.
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Communes
+]
+.right-column[
+
+### Le système hébergant l'application web peut tomber en panne.
+
+**Acteur:** Panne matérielle.
+
+**Moyen(s):** Suite à une surcharge, défaillance d'un disque.
+
+**Motivation(s):** -
+
+**Effet:** Indisponibilité et destruction.
+
+**Impact:**
+
+* Réputationnel (Moyen);
+* Financier (Moyen);
+* Productivité (Élevé).
+
+**Contremesures:**
+
+* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Communes
+]
+.right-column[
+
+### Le système hébergant l'application web peut tomber en panne.
+
+**Acteur:** Un hacker.
+
+**Moyen(s):** DDoS.
+
+**Motivation(s):** Racket.
+
+**Effet:** Indisponibilité.
+
+**Impact:**
+
+* Réputationnel (Moyen);
+* Financier (Moyen);
+* Productivité (Élevé).
+
+**Contremesures:**
+.red[Risque accepté.]
+
+]
+
+---
+
+.left-column[
+  ## Menaces
+  ### Communes
   ### Données utilisateurs
 ]
 .right-column[
@@ -276,67 +434,7 @@ frauduleuse ou d'une vente à un tier.
 
 .left-column[
   ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### Les données utilisateurs peuvent être détruites.
-
-**Acteur:** Un administrateur.
-
-**Moyen(s):** Mauvaise manipulation (Mise à jours de l'application ou du système).
-
-**Motivation(s):** Aucune raison apparente.
-
-**Effet:** Destruction, indisponibilité.
-
-**Impact:**
-
-* Réputationnel (Élevé);
-* Financier (Élevé);
-* Productivité (Moyen).
-
-**Contremesures:**
-
-* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
-* Sensibiliser le nouveau personnel quant à l'utilisation du système.
-
-]
-
----
-
-.left-column[
-  ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### Les données utilisateurs peuvent être inaccessibles.
-
-**Acteur:** Un administrateur.
-
-**Moyen(s):** Mauvaise manipulation (Mise à jours de l'application ou du système).
-
-**Motivation(s):** Aucune raison apparente.
-
-**Effet:** Indisponibilité
-
-**Impact:**
-
-* Réputationnel (Moyen);
-* Financier (Faible);
-* Productivité (Moyen).
-
-**Contremesures:**
-
-* Sensibiliser le nouveau personnel quant à l'utilisation du système.
-
-]
-
----
-
-.left-column[
-  ## Menaces
+  ### Communes
   ### Données utilisateurs
 ]
 .right-column[
@@ -369,19 +467,79 @@ d'usurpation d'identité, de pivot ou de chantage.
 
 .left-column[
   ## Menaces
-  ### Données utilisateurs
+  ### Messages 
 ]
 .right-column[
 
-### Les données utilisateurs peuvent être détruites.
+### Les messages peuvent être volés.
 
-**Acteur:** Un hacker (script-kiddie).
+**Acteur:** Un administrateur.
+
+**Moyen(s):** Accès légitime à la base de donnée.
+
+**Motivation(s):** Vol suite à un licenciement dans le but d'une réutilisation
+frauduleuse ou d'une vente à un tier. Par voyeurisme.
+
+**Effet:** Divulgation.
+
+**Impact:**
+
+* Réputationnel (Élevé);
+* Financier (Élevé);
+* Productivité (Faible).
+
+**Contremesures:**
+
+* Chiffrement de bout en bout;
+
+]
+---
+
+.left-column[
+  ## Menaces
+  ### Messages
+]
+.right-column[
+
+### Les messages peuvent être modifiés.
+
+**Acteur:** Un administrateur.
+
+**Moyen(s):** Accès légitime à la base de donnée.
+
+**Motivation(s):** L'administrateur peut être payé par un tier (crime organisé, espionnage) pour le faire.
+
+**Effet:** Modification
+
+**Impact:**
+
+* Réputationnel (Faible);
+* Financier (Moyen);
+* Productivité (Faible).
+
+**Contremesures:**
+
+* Chiffrement de bout en bout;
+
+]
+---
+
+.left-column[
+  ## Menaces
+  ### Messages
+]
+.right-column[
+
+### Les messages peuvent être volés.
+
+**Acteur:** Un hacker.
 
 **Moyen(s):** Exploitation d'une faille de l'application ou du serveur.
 
-**Motivation(s):** Pour le lulz.
+**Motivation(s):** Vol dans un but d'aquérir de l'intelligence, de revente,
+d'usurpation d'identité, de pivot ou de chantage.
 
-**Effet:** Destruction.
+**Effet:** Divulgation.
 
 **Impact:**
 
@@ -391,201 +549,11 @@ d'usurpation d'identité, de pivot ou de chantage.
 
 **Contremesures:**
 
-* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
 * Audit régulier de l'application web et de l'infrastructure système.
+* Chiffrement de bout en bout;
 
 ]
 
----
-
-.left-column[
-  ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### Une erreur de conception peut aboutir à la divulgation ou la destruction des données utilisateurs.
-
-**Acteur:** Bug applicatif.
-
-**Moyen(s):** -
-
-**Motivation(s):** -
-
-**Effet:** Divulgation, indisponibilité et destruction.
-
-**Impact:**
-
-* Réputationnel (Élevé);
-* Financier (Moyen);
-* Productivité (Moyen).
-
-**Contremesures:**
-
-* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
-* Audit régulier de l'application web et de l'infrastructure système.
-
-]
-
----
-
-.left-column[
-  ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### Le système hébergant l'application web peut tomber en panne.
-
-**Acteur:** Panne matérielle.
-
-**Moyen(s):** Suite à une surcharge.
-
-**Motivation(s):** -
-
-**Effet:** Indisponibilité et destruction.
-
-**Impact:**
-
-* Réputationnel (Moyen);
-* Financier (Moyen);
-* Productivité (Élevé).
-
-**Contremesures:**
-
-* Élaborer et appliquer une stratégie de sauvegarde de la base de données;
-
-]
----
-
-.left-column[
-  ## Menaces
-  ### Messages 
-]
-.right-column[
-
-### AoC
-
-**Acteur:**
-
-**Moyen(s):**
-
-**Motivation(s):**
-
-**Effet:**
-
-**Impact:**
-
-* Réputationnel ();
-* Financier ();
-* Productivité ().
-
-**Contremesures:**
-]
----
-
-.left-column[
-  ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### AoC
-
-**Acteur:**
-
-**Moyen(s):**
-
-**Motivation(s):**
-
-**Effet:**
-
-**Impact:**
-
-* Réputationnel ();
-* Financier ();
-* Productivité ().
-
-**Contremesures:**
-]
----
-
-.left-column[
-  ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### AoC
-
-**Acteur:**
-
-**Moyen(s):**
-
-**Motivation(s):**
-
-**Effet:**
-
-**Impact:**
-
-* Réputationnel ();
-* Financier ();
-* Productivité ().
-
-**Contremesures:**
-]
----
-
-.left-column[
-  ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### AoC
-
-**Acteur:**
-
-**Moyen(s):**
-
-**Motivation(s):**
-
-**Effet:**
-
-**Impact:**
-
-* Réputationnel ();
-* Financier ();
-* Productivité ().
-
-**Contremesures:**
-]
----
-
-.left-column[
-  ## Menaces
-  ### Données utilisateurs
-]
-.right-column[
-
-### AoC
-
-**Acteur:**
-
-**Moyen(s):**
-
-**Motivation(s):**
-
-**Effet:**
-
-**Impact:**
-
-* Réputationnel ();
-* Financier ();
-* Productivité ().
-
-**Contremesures:**
-]
 ---
 
 .left-column[
@@ -596,7 +564,7 @@ d'usurpation d'identité, de pivot ou de chantage.
 
 ]
 ---
-template:inverse
+template: inverse
 
 Le mot de la fin..
     </textarea>
